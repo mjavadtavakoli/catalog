@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Simple Product Catalog</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="" />
+		<script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<meta charset utf="8">
+
+		<!--fonts-->
+		<!--bootstrap-->
+			 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!--coustom css-->
+			<link href="/css/style.css" rel="stylesheet" type="text/css"/>
+        <!--shop-kart-js-->
+        <script src="/js/simpleCart.min.js"></script>
+		<!--default-js-->
+			<script src="/js/jquery-2.1.4.min.js"></script>
+		<!--bootstrap-js-->
+			<script src="/js/bootstrap.min.js"></script>
+      <script>
+$( document ).ready(function() {
+  createCategories(false);
+});
+      </script>
+		<!--script-->
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="/">محصولات</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- menu bar -->
+                <div class="header-botom">
+                    <div class="content white">
+                    <nav class="navbar navbar-default nav-menu" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- /.navbar-header -->
+
+                        <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
+                            <ul id="menu" class="nav navbar-nav nav-font">
+                                {{ range $category := .categories }}
+                                <li><a href="/category/{{$category.ID}}">{{ $category.Title }}</a></li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                        <!--/.navbar-collapse-->
+                        <div class="clearfix"></div>
+                    </nav>
+                    <!--/.navbar-->
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--/.content--->
+                </div>
+                    <!--header-bottom-->
+            </div>
+        </div>
+
+        <div class="products-gallery">
+          <div class="container">
+            <div id="categoriesList" class="col-md-12 grid-gallery"></div>
+
+            {{ range $category := .categories }}
+            <div class="col-md-4 grid-stn simpleCart_shelfItem">
+                <div class="img">
+                    <a href="/category/{{$category.ID}}">
+                        <img src="{{ $category.Image }}" alt="/" class="img-responsive gri-wid">
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="pull-left styl-hdn">
+                        <a href="products.html?c=0">
+                            <h3>{{ $category.Title }}</h3>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="footer-grid">
+            <div class="copy-rt">
+                <div class="container">
+            <p>&copy; 2016 Open Source </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
